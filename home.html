@@ -1,0 +1,64 @@
+<!doctype html>
+<!--[if IE 7 ]>		 <html class="no-js ie ie7 lte7 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>		 <html class="no-js ie ie8 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>		 <html class="no-js ie ie9 lte9>" lang="en-US"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> 
+<html class="no-js" lang="en-US"> 
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Test page with jquery</title>
+	<meta name="author" content="supratims@gmail.com">
+	<meta name="description" content="A test page with jquery">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mx-auto">
+	<h2>Items: </h2>
+	<div class="card">
+	  <ul class="list-group list-group-flush js-list">
+	  </ul>	
+	</div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(function(){
+        (function($) {
+            $.wait = function(time) {
+                 return $.Deferred(function(dfd) {
+                    setTimeout(dfd.resolve, time); // use setTimeout internally. 
+                 }).promise();
+            }
+        }(jQuery));
+    	var items = [
+	    	'BMW', 'Audi', 'Volvo', 'Volkswagen', 'Ford', 'Honda', 'Nissan', 'Toyota', 'Citroen', 'Seat'
+    	];
+	
+    	var $list_root = $('.js-list');
+    	$('body').on('add-item', '.js-list', function(){
+    		var item = $(this).data('item');
+    		createItem(item).appendTo($list_root);
+    	});
+
+    	function createItem(text){
+    		return $('<li>').addClass('list-group-item').html(text);
+    	}
+
+	    $.each(items, function(i, item){
+            $.wait(500*i).then(function(){
+    		    $list_root.data('item', item).trigger('add-item');	
+            });
+    	});	
+    });
+</script>
+</body>
+</html>
+
