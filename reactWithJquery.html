@@ -40,11 +40,23 @@
 	    	'BMW', 'Audi', 'Volvo', 'Volkswagen', 'Ford', 'Honda', 'Nissan', 'Toyota', 'Citroen', 'Seat'
     	];
 
+        /*
+        var config = {};
+
+        var componentWillMount= function(){
+            config.callback = function(){
+            // `this` refers to the root react component
+                this.setState(items);     
+            };
+        }
+
         $.each(items, function(i, item){
             $.wait(i*500).then(function(){
-                ITEMS_ARRAY.push(item);
+                config.callback(); 
             });
-        }); 
+        });
+        renderItems(items);
+        */
     });
 </script>
 </body>

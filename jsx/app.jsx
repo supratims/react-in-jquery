@@ -14,8 +14,10 @@ class MainComponent extends React.Component {
 
 // ========================================
 
-var ITEMS_ARRAY = [];
-ReactDOM.render(
-   <MainComponent items={ITEMS_ARRAY}/>,
-   document.getElementById('items')
-);
+
+function renderItems(items_array){
+    ReactDOM.render(
+       <MainComponent items={items_array}/>,
+       document.getElementById('items')
+    );
+}
