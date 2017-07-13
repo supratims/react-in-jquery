@@ -8,9 +8,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Test page with jquery</title>
+	<title>Test page with reactjs and jquery</title>
 	<meta name="author" content="supratims@gmail.com">
-	<meta name="description" content="A test page with jquery">
+	<meta name="description" content="A test page with reactjs inside jquery">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
@@ -18,9 +18,7 @@
 
 <div class="container mx-auto">
 	<h2>Items: </h2>
-	<div class="card">
-	  <ul class="list-group list-group-flush js-list">
-	  </ul>	
+	<div class="card" id='items'>
 	</div>
 </div>
 
@@ -28,7 +26,7 @@
   src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
   crossorigin="anonymous"></script>
-
+<script src='js/app.js' type="text/javascript"></script>
 <script type="text/javascript">
     $(function(){
         (function($) {
@@ -41,22 +39,12 @@
     	var items = [
 	    	'BMW', 'Audi', 'Volvo', 'Volkswagen', 'Ford', 'Honda', 'Nissan', 'Toyota', 'Citroen', 'Seat'
     	];
-	
-    	var $list_root = $('.js-list');
-    	$('body').on('add-item', '.js-list', function(){
-    		var item = $(this).data('item');
-    		createItem(item).appendTo($list_root);
-    	});
 
-    	function createItem(text){
-    		return $('<li>').addClass('list-group-item').html(text);
-    	}
-
-	    $.each(items, function(i, item){
-            $.wait(500*i).then(function(){
-    		    $list_root.data('item', item).trigger('add-item');	
+        $.each(items, function(i, item){
+            $.wait(i*500).then(function(){
+                ITEMS_ARRAY.push(item);
             });
-    	});	
+        }); 
     });
 </script>
 </body>
