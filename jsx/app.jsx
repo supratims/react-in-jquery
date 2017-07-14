@@ -8,7 +8,12 @@ class MainComponent extends React.Component {
            html.push(<li>{data}</li>);
         });
 
-      return (<ul className='list-group list-group-flush'>{html}</ul>);
+      return (<ul onClick={this.handleClick.bind(this)} className='list-group list-group-flush'>{html}</ul>);
+    }
+
+    handleClick(event){
+      //console.log(event.target.data('test'));
+      event.target.trigger('testevent');
     }
 }
 
@@ -21,3 +26,5 @@ function renderItems(items_array){
        document.getElementById('items')
     );
 }
+
+renderItems(['a', 'b']);

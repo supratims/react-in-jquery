@@ -43,13 +43,6 @@
         /*
         var config = {};
 
-        var componentWillMount= function(){
-            config.callback = function(){
-            // `this` refers to the root react component
-                this.setState(items);     
-            };
-        }
-
         $.each(items, function(i, item){
             $.wait(i*500).then(function(){
                 config.callback(); 
@@ -57,6 +50,10 @@
         });
         renderItems(items);
         */
+
+        $('body').on('testevent', 'li', function(){
+            console.log('event found');
+        });
     });
 </script>
 </body>

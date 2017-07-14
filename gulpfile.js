@@ -68,4 +68,5 @@ gulp.task('browsersync', function(){
 });
 
 gulp.task('react-build', ['concat']);
+gulp.task('default', ['react-build']);
 
